@@ -1,0 +1,18 @@
+{
+  "name": "endpoints",
+  "version": "1.0.0",
+  "description": "The services endpoints implementation",
+  "main": "index.js",
+  "scripts": {
+    "dev": "watch 'npm test' src/ ",
+    "test": "tape src/**/*.tests.js | tap-spec"
+  },
+  "author": "Gal Noy",
+  "license": "ISC",
+  "devDependencies": {
+    "nedb-promise": "^2.0.0",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.6.3",
+    "watch": "^1.0.1"
+  }
+}
