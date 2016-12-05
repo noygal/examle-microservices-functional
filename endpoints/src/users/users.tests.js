@@ -19,13 +19,16 @@ const collection = new Datastore()
 const controller = endpoints.init(collection)
 
 test('POST new user', function (t) {
-  t.plan(2)
+  t.plan(3)
   controller['/'].post(req, {
     json: data => {
       compareUsers(data, req.body, t)
       req.params.userId = data._id
     },
-    status: code => t.equal(code, 201, 'should return 201')
+    status: function (code) {
+      t.equal(code, 201, 'should return 201')
+      return this
+    }
   })
 })
 
@@ -60,3 +63,31 @@ test('DELETE user - by userId', function (t) {
     }
   })
 })
+
+test('GET user - 404', function (t) {
+  t.plan(1)
+  controller['/:userId'].get(req, {
+    sendStatus: code => {
+      t.equal(code, 404, 'should return 404')
+    }
+  })
+})
+
+test('PUT user - 404', function (t) {
+  t.plan(1)
+  controller['/:userId'].put(req, {
+    sendStatus: code => {
+      t.equal(code, 404, 'should return 404')
+    }
+  })
+})
+
+test('DELETE user - 404', function (t) {
+  t.plan(1)
+  controller['/:userId'].delete(req, {
+    sendStatus: code => {
+      t.equal(code, 404, 'should return 404')
+    }
+  })
+})
+

@@ -21,7 +21,7 @@ test('GET posts - by userId', function (t) {
 })
 
 test('POST posts - by userId', function (t) {
-  t.plan(4)
+  t.plan(5)
   const collection = new Datastore()
   endpoints.init(collection)['/:userId']
   .post(req,
@@ -34,6 +34,10 @@ test('POST posts - by userId', function (t) {
           t.equal(doc.subject, req.body.subject, 'correct subject in collection')
           t.equal(doc.message, req.body.message, 'correct message in collection')
         })
+      },
+      status: function (code) {
+        t.equal(code, 201, 'should return 201')
+        return this
       }
     }
   )

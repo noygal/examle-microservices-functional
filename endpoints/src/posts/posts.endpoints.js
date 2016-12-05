@@ -5,7 +5,7 @@ const init = (collection) => ({
       const {subject = '', message = ''} = req.body
       const post = {userId, subject, message, createDate: new Date()}
       collection.insert(post)
-      .then(doc => res.json(doc))
+      .then(doc => res.status(201).json(doc))
       .catch(err => {
         res.status(500)
         next(new Error('DB_ERROR', err))
