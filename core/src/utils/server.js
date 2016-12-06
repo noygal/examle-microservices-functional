@@ -13,4 +13,6 @@ const init = (options = {noMapper: false}) => {
   return app
 }
 
-module.exports = { init }
+const getUrl = settings => `${settings.schemes[0]}://${settings.host}:${settings.port}${settings.base}`
+
+module.exports = { init, getUrl }
