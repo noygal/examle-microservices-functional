@@ -1,0 +1,21 @@
+{
+  "name": "core",
+  "version": "1.0.0",
+  "description": "Core services and utils",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gal Noy",
+  "license": "ISC",
+  "dependencies": {
+    "compression": "^1.6.2",
+    "express": "^4.14.0",
+    "express-winston": "^2.1.0",
+    "expressjs-route-mapper": "0.0.11",
+    "mongodb": "^2.2.12",
+    "nedb-promise": "^2.0.0",
+    "winston": "^2.3.0",
+    "winston-logstash": "^0.3.0"
+  }
+}
